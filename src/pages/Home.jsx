@@ -10,12 +10,6 @@ import Footer from '@/components/portfolio/Footer';
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  useEffect(() => {
-    // Check system preference on mount
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(prefersDark);
-  }, []);
-
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -26,7 +20,7 @@ export default function Home() {
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <HeroSection isDarkMode={isDarkMode} />
       <AboutSection isDarkMode={isDarkMode} />
-      <SkillCloud isDarkMode={isDarkMode} />
+      {/* <SkillCloud isDarkMode={isDarkMode} /> */}
       <WorkProjectsSection isDarkMode={isDarkMode} />
       <PersonalProjectsSection isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
