@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/portfolio/Navbar';
 import HeroSection from '@/components/portfolio/HeroSection';
 import AboutSection from '@/components/portfolio/AboutSection';
+import SkillCloud from '@/components/portfolio/3D/SkillCloud';
 import WorkProjectsSection from '@/components/portfolio/WorkProjectsSection';
 import PersonalProjectsSection from '@/components/portfolio/PersonalProjectsSection';
 import Footer from '@/components/portfolio/Footer';
@@ -25,6 +26,7 @@ export default function Home() {
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <HeroSection isDarkMode={isDarkMode} />
       <AboutSection isDarkMode={isDarkMode} />
+      <SkillCloud isDarkMode={isDarkMode} />
       <WorkProjectsSection isDarkMode={isDarkMode} />
       <PersonalProjectsSection isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
