@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Code2, Palette, Rocket, Zap, Award, Coffee } from 'lucide-react';
 import Scene3D from './3D/Scene3D';
+import SkillCloud from './3D/SkillCloud';
 
 const SkillBar = ({ skill, percentage, isDarkMode, delay }) => (
   <motion.div
@@ -39,8 +40,8 @@ const StatCard = ({ icon: Icon, value, label, isDarkMode, delay }) => (
     viewport={{ once: true }}
     whileHover={{ y: -5, scale: 1.02 }}
     className={`p-6 rounded-2xl text-center transition-all duration-300 ${isDarkMode
-        ? 'bg-slate-800/50 border border-slate-700 hover:border-[#088395]/50'
-        : 'bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-[#7AB2B2]'
+      ? 'bg-slate-800/50 border border-slate-700 hover:border-[#088395]/50'
+      : 'bg-white border border-slate-200 shadow-sm hover:shadow-lg hover:border-[#7AB2B2]'
       }`}
   >
     <div className={`inline-flex p-3 rounded-xl mb-4 ${isDarkMode ? 'bg-[#088395]/20' : 'bg-[#EBF4F6]'
@@ -75,22 +76,22 @@ export default function AboutSection({ isDarkMode }) {
   ];
 
   const stats = [
-    { icon: Award, value: '5+', label: 'Years Experience' },
-    { icon: Rocket, value: '50+', label: 'Projects Delivered' },
-    { icon: Coffee, value: '1000+', label: 'Cups of Coffee' },
-    { icon: Zap, value: '99%', label: 'Client Satisfaction' },
+    { icon: Award, value: '6+', label: 'Years Experience' },
+    { icon: Rocket, value: '8+', label: 'Projects Delivered' },
+    { icon: Coffee, value: '10+', label: 'Real Life Self Projects' },
+    { icon: Zap, value: '100%', label: 'Client Satisfaction' },
   ];
 
   const services = [
     {
-      icon: Code2,
+      icon: Palette,
       title: 'Web Development',
       description: 'Building scalable web applications with modern frameworks and best practices.',
     },
     {
-      icon: Palette,
-      title: 'UI/UX Design',
-      description: 'Creating intuitive and beautiful interfaces that users love to interact with.',
+      icon: Code2,
+      title: 'Backend Development',
+      description: 'Have Experience with ExpressJS,MongoDB,SQL,Docker,Redis,RabbitMQ',
     },
     {
       icon: Rocket,
@@ -104,14 +105,14 @@ export default function AboutSection({ isDarkMode }) {
       id="about"
       ref={sectionRef}
       className={`relative py-32 overflow-hidden ${isDarkMode
-          ? 'bg-gradient-to-b from-slate-900 to-slate-950'
-          : 'bg-gradient-to-b from-white to-slate-50'
+        ? 'bg-gradient-to-b from-slate-900 to-slate-950'
+        : 'bg-gradient-to-b from-white to-slate-50'
         }`}
     >
       {/* 3D Scene */}
-      <div className="absolute inset-0 overflow-hidden opacity-40">
-        <Scene3D isDarkMode={isDarkMode} scrollProgress={scrollProgress} variant="about" />
-      </div>
+      {/* <div className="absolute inset-0 overflow-hidden opacity-40"> */}
+      {/* <Scene3D isDarkMode={isDarkMode} scrollProgress={scrollProgress} variant="about" /> */}
+      {/* </div> */}
 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -133,8 +134,8 @@ export default function AboutSection({ isDarkMode }) {
           className="text-center mb-20"
         >
           <span className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 ${isDarkMode
-              ? 'bg-[#088395]/20 text-[#7AB2B2]'
-              : 'bg-[#EBF4F6] text-[#088395]'
+            ? 'bg-[#088395]/20 text-[#7AB2B2]'
+            : 'bg-[#EBF4F6] text-[#088395]'
             }`}>
             About Me
           </span>
@@ -166,18 +167,19 @@ export default function AboutSection({ isDarkMode }) {
               {/* Image Container */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="relative z-10 rounded-3xl overflow-hidden"
+                className="relative z-10 rounded-3xl overflow-hidden absolute"
               >
-                <img
+                <SkillCloud isDarkMode={isDarkMode} />
+                {/* <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop"
                   alt="Profile"
                   className="w-full h-[500px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" /> */}
               </motion.div>
 
               {/* Floating Card */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -198,7 +200,7 @@ export default function AboutSection({ isDarkMode }) {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.div> */}
 
               {/* Decorative Elements */}
               <div className={`absolute -top-4 -left-4 w-24 h-24 rounded-2xl -z-10 ${isDarkMode ? 'bg-violet-500/20' : 'bg-violet-200'
@@ -216,10 +218,10 @@ export default function AboutSection({ isDarkMode }) {
               viewport={{ once: true }}
               className={`text-2xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}
             >
-              My Technical Skills
+              My Technical Experiences
             </motion.h3>
 
-            <div className="space-y-6">
+            {/* <div className="space-y-6">
               {skills.map((item, index) => (
                 <SkillBar
                   key={item.skill}
@@ -229,7 +231,7 @@ export default function AboutSection({ isDarkMode }) {
                   delay={index * 0.1}
                 />
               ))}
-            </div>
+            </div> */}
 
             <motion.p
               initial={{ opacity: 0 }}
@@ -238,10 +240,10 @@ export default function AboutSection({ isDarkMode }) {
               viewport={{ once: true }}
               className={`mt-8 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}
             >
-              With a strong foundation in both frontend and backend technologies,
-              I bring ideas to life through clean, efficient code and thoughtful design.
-              I'm constantly learning and adapting to new technologies to deliver
-              the best solutions.
+              With 6+ years of experience building scalable FinTech, E-commerce, and real-time platforms across
+              Southeast Asia. Specialized in React, TypeScript, and Next.js with strong expertise in WebSocket-based real-time systems
+              and role-based access control.Have Experience in ExpressJS,MongoDB,Docker,Redis,RabbitMQ too .Proven track record delivering production-grade systems, mentoring engineers, and
+              collaborating with cross-functional teams in fast-paced environments. Have
             </motion.p>
           </div>
         </div>
@@ -271,13 +273,13 @@ export default function AboutSection({ isDarkMode }) {
               viewport={{ once: true }}
               whileHover={{ y: -8 }}
               className={`group p-8 rounded-3xl transition-all duration-300 ${isDarkMode
-                  ? 'bg-gradient-to-br from-slate-800 to-slate-800/50 border border-slate-700 hover:border-[#088395]/50'
-                  : 'bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#7AB2B2]'
+                ? 'bg-gradient-to-br from-slate-800 to-slate-800/50 border border-slate-700 hover:border-[#088395]/50'
+                : 'bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#7AB2B2]'
                 }`}
             >
               <div className={`inline-flex p-4 rounded-2xl mb-6 transition-all duration-300 ${isDarkMode
-                  ? 'bg-[#088395]/20 group-hover:bg-[#088395]/30'
-                  : 'bg-[#EBF4F6] group-hover:bg-[#7AB2B2]/20'
+                ? 'bg-[#088395]/20 group-hover:bg-[#088395]/30'
+                : 'bg-[#EBF4F6] group-hover:bg-[#7AB2B2]/20'
                 }`}>
                 <service.icon className="w-8 h-8 text-[#088395]" />
               </div>

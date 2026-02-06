@@ -94,8 +94,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       id="work"
       ref={sectionRef}
       className={`relative py-32 overflow-hidden ${isDarkMode
-          ? 'bg-gradient-to-b from-slate-950 to-slate-900'
-          : 'bg-gradient-to-b from-slate-50 to-white'
+        ? 'bg-gradient-to-b from-slate-950 to-slate-900'
+        : 'bg-gradient-to-b from-slate-50 to-white'
         }`}
     >
       {/* 3D Scene */}
@@ -107,8 +107,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       <div className="absolute inset-0">
         <div
           className={`absolute inset-0 ${isDarkMode
-              ? 'bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.08)_0%,transparent_50%)]'
-              : 'bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.05)_0%,transparent_50%)]'
+            ? 'bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.08)_0%,transparent_50%)]'
+            : 'bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.05)_0%,transparent_50%)]'
             }`}
         />
       </div>
@@ -123,15 +123,15 @@ export default function WorkProjectsSection({ isDarkMode }) {
           className="text-center mb-16"
         >
           <span className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 ${isDarkMode
-              ? 'bg-violet-500/20 text-violet-400'
-              : 'bg-violet-100 text-violet-600'
+            ? 'bg-[#09637E]/20 text-[#7AB2B2]'
+            : 'bg-[#EBF4F6] text-[#09637E]'
             }`}>
             Work Projects
           </span>
           <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             Professional{' '}
-            <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#09637E] to-[#088395] bg-clip-text text-transparent">
               Portfolio
             </span>
           </h2>
@@ -157,10 +157,10 @@ export default function WorkProjectsSection({ isDarkMode }) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter
-                  ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-500/25'
-                  : isDarkMode
-                    ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                ? 'bg-gradient-to-r from-[#09637E] to-[#088395] text-white shadow-lg shadow-[#09637E]/25'
+                : isDarkMode
+                  ? 'bg-[#09637E]/20 text-[#7AB2B2]'
+                  : 'bg-[#EBF4F6] text-[#09637E]'
                 }`}
             >
               {filter}

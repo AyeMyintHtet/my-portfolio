@@ -50,7 +50,7 @@ export default function Home() {
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <HeroSection isDarkMode={isDarkMode} />
       <AboutSection isDarkMode={isDarkMode} />
-      <SkillCloud isDarkMode={isDarkMode} />
+      {/* <SkillCloud isDarkMode={isDarkMode} /> */}
       <WorkProjectsSection isDarkMode={isDarkMode} />
       <PersonalProjectsSection isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />

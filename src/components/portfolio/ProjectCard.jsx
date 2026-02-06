@@ -18,8 +18,8 @@ export default function ProjectCard({ project, isDarkMode, index }) {
     >
       <div
         className={`relative overflow-hidden rounded-3xl transition-all duration-500 ${isDarkMode
-            ? 'bg-slate-800/50 border border-slate-700 hover:border-violet-500/50'
-            : 'bg-white border border-slate-200 shadow-sm hover:shadow-2xl hover:border-violet-300'
+          ? 'bg-slate-800/50 border border-slate-700 hover:border-violet-500/50'
+          : 'bg-white border border-slate-200 shadow-sm hover:shadow-2xl hover:border-violet-300'
           }`}
       >
         {/* Image Container */}
@@ -35,8 +35,8 @@ export default function ProjectCard({ project, isDarkMode, index }) {
           {/* Gradient Overlay */}
           <div
             className={`absolute inset-0 transition-opacity duration-500 ${isDarkMode
-                ? 'bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent'
-                : 'bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent'
+              ? 'bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent'
+              : 'bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent'
               } ${isHovered ? 'opacity-100' : 'opacity-60'}`}
           />
 
@@ -76,7 +76,7 @@ export default function ProjectCard({ project, isDarkMode, index }) {
               animate={{ opacity: 1, x: 0 }}
               className="absolute top-4 left-4"
             >
-              <Badge className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-0 px-3 py-1">
+              <Badge className="bg-gradient-to-r from-[#09637E] to-[#088395] text-white border-0 px-3 py-1">
                 Featured
               </Badge>
             </motion.div>
@@ -109,8 +109,8 @@ export default function ProjectCard({ project, isDarkMode, index }) {
               <span
                 key={tech}
                 className={`px-3 py-1 rounded-full text-xs font-medium ${isDarkMode
-                    ? 'bg-slate-700 text-slate-300'
-                    : 'bg-slate-100 text-slate-700'
+                  ? 'bg-slate-700 text-slate-300'
+                  : 'bg-slate-100 text-slate-700'
                   }`}
               >
                 {tech}

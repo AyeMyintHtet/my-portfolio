@@ -64,8 +64,8 @@ const TypeWriter = ({ words, isDarkMode }) => {
   }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
-    <span className="inline-flex items-center">
-      <span className="bg-gradient-to-r from-[#088395] via-[#7AB2B2] to-[#09637E] bg-clip-text text-transparent">
+    <span className="inline-flex items-center ">
+      <span className="bg-gradient-to-r from-[#088395] via-[#7AB2B2] to-[#09637E] bg-clip-text text-transparent h-[80px]">
         {currentText}
       </span>
       <motion.span
@@ -79,7 +79,7 @@ const TypeWriter = ({ words, isDarkMode }) => {
 
 export default function HeroSection({ isDarkMode }) {
   const containerRef = useRef(null);
-  const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Explorer'];
+  const roles = ['Full Stack Engineer', 'Frontend Engineer', 'Problem Solver', 'Tech Explorer'];
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -89,10 +89,10 @@ export default function HeroSection({ isDarkMode }) {
   const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Mail, href: '#', label: 'Email' },
+    { icon: Github, href: 'https://github.com/AyeMyintHtet', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/aye-myint-htet-195616187/', label: 'LinkedIn' },
+    // { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Mail, href: 'ayemyinthtet@gmail.com', label: 'Email' },
   ];
 
   return (
@@ -105,7 +105,7 @@ export default function HeroSection({ isDarkMode }) {
         }`}
     >
       {/* 3D Scene Background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden opacity-30">
         <motion.div
           className="absolute inset-0"
           style={{ opacity: useTransform(scrollYProgress, [0, 0.5], [1, 0]) }}
@@ -254,7 +254,7 @@ export default function HeroSection({ isDarkMode }) {
             size="lg"
             variant="outline"
             className={`px-8 py-6 text-lg rounded-full transition-all duration-300 hover:-translate-y-1 ${isDarkMode
-              ? 'border-slate-700 text-slate-300 hover:bg-slate-800 hover:border-slate-600'
+              ? 'border-slate-700 text-black hover:text-white hover:bg-slate-800 hover:border-slate-600'
               : 'border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400'
               }`}
           >
