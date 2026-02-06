@@ -17,9 +17,9 @@ export default function ProjectCard({ project, isDarkMode, index }) {
       className="group relative"
     >
       <div
-        className={`relative overflow-hidden rounded-3xl transition-all duration-500 ${isDarkMode
-          ? 'bg-slate-800/50 border border-slate-700 hover:border-violet-500/50'
-          : 'bg-white border border-slate-200 shadow-sm hover:shadow-2xl hover:border-violet-300'
+        className={`relative overflow-hidden rounded-3xl transition-all duration-500 h-full ${isDarkMode
+          ? 'bg-slate-800/50 border border-slate-700 hover:border-[#09637E]/50'
+          : 'bg-white border border-slate-200 shadow-sm hover:shadow-2xl hover:border-[#09637E]/30'
           }`}
       >
         {/* Image Container */}
@@ -86,13 +86,12 @@ export default function ProjectCard({ project, isDarkMode, index }) {
         {/* Content */}
         <div className="p-6">
           {/* Category */}
-          <div className={`text-sm font-medium mb-2 ${isDarkMode ? 'text-violet-400' : 'text-violet-600'
-            }`}>
+          <div className={`text-sm font-medium mb-2 bg-gradient-to-r from-[#09637E] to-[#d3f4f9] bg-clip-text text-transparent`}>
             {project.category}
           </div>
 
           {/* Title */}
-          <h3 className={`text-xl font-bold mb-3 group-hover:text-violet-500 transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'
+          <h3 className={`text-xl font-bold mb-3 group-hover:text-[#09637E] transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             {project.title}
           </h3>
@@ -121,8 +120,7 @@ export default function ProjectCard({ project, isDarkMode, index }) {
           {/* Link */}
           <motion.a
             href={project.liveUrl}
-            className={`inline-flex items-center gap-2 text-sm font-medium ${isDarkMode ? 'text-violet-400' : 'text-violet-600'
-              }`}
+            className={`inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r from-[#09637E] to-[#088395] bg-clip-text text-transparent`}
             whileHover={{ x: 5 }}
           >
             View Project
