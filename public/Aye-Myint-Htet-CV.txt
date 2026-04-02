@@ -1,0 +1,24 @@
+Aye Myint Htet
+Full Stack Engineer
+Email: ayemyinthtet099@gmail.com
+GitHub: https://github.com/AyeMyintHtet
+LinkedIn: https://www.linkedin.com/in/aye-myint-htet-195616187/
+
+Summary
+Software engineer with 6+ years of experience building scalable web applications across FinTech, e-commerce, and real-time platforms. Strong focus on React, TypeScript, Next.js, and backend systems.
+
+Core Skills
+- Frontend: React, Next.js, JavaScript, TypeScript, Tailwind CSS
+- Backend: Node.js, Express.js, REST APIs
+- Databases: MongoDB, PostgreSQL, SQL
+- Infrastructure: Docker, Redis, RabbitMQ
+- Other: WebSocket systems, role-based access control, performance optimization
+
+Experience Highlights
+- Delivered production-grade systems for multiple business domains
+- Built real-time features with robust state and access control
+- Collaborated with cross-functional teams in fast-paced environments
+- Mentored engineers and supported delivery quality
+
+Note
+Replace this file with your latest PDF resume when available.

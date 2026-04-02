@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -47,9 +47,6 @@ function Cloud({ radius = 8 }) { // Reduced radius for better fit
   // Create a count x count random words with spherical distribution
   const words = useMemo(() => {
     const temp = [];
-    const spherical = new THREE.Spherical();
-    const phiSpan = Math.PI / (skills.length + 1);
-    const thetaSpan = (Math.PI * 2) / skills.length;
 
     for (let i = 0; i < skills.length; i++) {
       // Fibonacci Sphere Algorithm for even distribution

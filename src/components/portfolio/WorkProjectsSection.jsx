@@ -1,11 +1,16 @@
-import React, { useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { lazy, Suspense, useRef, useState } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import ProjectCard from './ProjectCard';
-import Scene3D from './3D/Scene3D';
+import { useIsMobile } from '@/hooks/use-mobile';
+
+const Scene3D = lazy(() => import('./3D/Scene3D'));
 
 export default function WorkProjectsSection({ isDarkMode }) {
   const [activeFilter, setActiveFilter] = useState('All');
   const sectionRef = useRef(null);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+  const show3DBackground = !isMobile && !prefersReducedMotion;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -24,8 +29,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       description: 'A comprehensive financial tracking platform with real-time analytics, AI-powered insights, and seamless integrations with major banks.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: null,
+      githubUrl: null,
       featured: true,
     },
     {
@@ -35,8 +40,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       description: 'Full-stack e-commerce solution with advanced inventory management, payment processing, and analytics dashboard.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
       technologies: ['Next.js', 'Stripe', 'MongoDB', 'Redis'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: null,
+      githubUrl: null,
       featured: true,
     },
     {
@@ -46,8 +51,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       description: 'Cross-platform health monitoring application with wearable device integration and personalized recommendations.',
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop',
       technologies: ['React Native', 'Firebase', 'HealthKit', 'TensorFlow'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: null,
+      githubUrl: null,
       featured: false,
     },
     {
@@ -57,8 +62,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       description: 'Enterprise team collaboration platform with real-time communication, project management, and file sharing.',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
       technologies: ['Vue.js', 'WebSocket', 'Docker', 'GraphQL'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: null,
+      githubUrl: null,
       featured: false,
     },
     {
@@ -68,8 +73,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       description: 'Modern CRM system with AI-powered lead scoring, automated workflows, and comprehensive reporting.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
       technologies: ['Angular', 'Python', 'Kubernetes', 'TensorFlow'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: null,
+      githubUrl: null,
       featured: true,
     },
     {
@@ -79,8 +84,8 @@ export default function WorkProjectsSection({ isDarkMode }) {
       description: 'Food delivery platform with real-time order tracking, restaurant management, and driver optimization.',
       image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=600&fit=crop',
       technologies: ['Flutter', 'Node.js', 'Google Maps', 'Stripe'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: null,
+      githubUrl: null,
       featured: false,
     },
   ];
@@ -99,9 +104,13 @@ export default function WorkProjectsSection({ isDarkMode }) {
         }`}
     >
       {/* 3D Scene */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
-        <Scene3D isDarkMode={isDarkMode} scrollProgress={scrollProgress} variant="projects" />
-      </div>
+      {show3DBackground && (
+        <div className="absolute inset-0 overflow-hidden opacity-30">
+          <Suspense fallback={null}>
+            <Scene3D isDarkMode={isDarkMode} scrollProgress={scrollProgress} variant="projects" />
+          </Suspense>
+        </div>
+      )}
 
       {/* Background Pattern */}
       <div className="absolute inset-0">

@@ -44,11 +44,13 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <motion.div
+            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 cursor-pointer"
               onClick={() => scrollTo('#hero')}
+              type="button"
+              aria-label="Scroll to home section"
             >
               <div className={`p-2 rounded-xl ${isDarkMode
                 ? 'bg-gradient-to-br from-[#09637E] to-[#088395]'
@@ -60,7 +62,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
                 }`}>
                 Aye<span className="text-[#088395]">Folio</span>
               </span>
-            </motion.div>
+            </motion.button>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
@@ -88,6 +90,8 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
                 whileHover={{ scale: 1.1, rotate: 180 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
+                type="button"
+                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
                 className={`p-2.5 rounded-full transition-all duration-300 ${isDarkMode
                   ? 'bg-slate-800 text-yellow-400 hover:bg-slate-700'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -118,6 +122,10 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                type="button"
+                aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-nav-menu"
                 className={`md:hidden p-2 rounded-lg ${isDarkMode ? 'text-white' : 'text-slate-900'
                   }`}
               >
@@ -135,6 +143,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
+            id="mobile-nav-menu"
             className={`fixed inset-x-0 top-20 z-40 md:hidden ${isDarkMode ? 'bg-slate-900/95' : 'bg-white/95'
               } backdrop-blur-xl border-b ${isDarkMode ? 'border-slate-800' : 'border-slate-200'
               }`}

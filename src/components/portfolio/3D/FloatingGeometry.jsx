@@ -64,7 +64,7 @@ export function FloatingBox({ isDarkMode, scrollProgress = 0 }) {
 export function FloatingSphere({ isDarkMode, scrollProgress = 0 }) {
   const meshRef = useRef();
 
-  useFrame((state) => {
+  useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y = scrollProgress * Math.PI * 2;
       meshRef.current.position.x = Math.cos(scrollProgress * Math.PI * 2) * 1.5;

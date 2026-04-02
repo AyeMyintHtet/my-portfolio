@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>AyeFolio Icon</title>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09637E" />
+      <stop offset="100%" stop-color="#088395" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)" />
+  <path d="M20 46l12-28 12 28h-6.2l-2.1-5.2h-7.4L26.2 46H20zm11.7-10.2h4.6L34 30l-2.3 5.8z" fill="#fff" />
+</svg>

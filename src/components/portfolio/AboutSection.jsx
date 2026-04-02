@@ -1,36 +1,9 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { lazy, Suspense, useRef } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Code2, Palette, Rocket, Zap, Award, Coffee } from 'lucide-react';
-import Scene3D from './3D/Scene3D';
-import SkillCloud from './3D/SkillCloud';
+import { useIsMobile } from '@/hooks/use-mobile';
 
-const SkillBar = ({ skill, percentage, isDarkMode, delay }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -30 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5, delay }}
-    viewport={{ once: true }}
-    className="mb-4"
-  >
-    <div className="flex justify-between mb-2">
-      <span className={`text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-        {skill}
-      </span>
-      <span className={`text-sm ${isDarkMode ? 'text-slate-500' : 'text-slate-500'}`}>
-        {percentage}%
-      </span>
-    </div>
-    <div className={`h-2 rounded-full overflow-hidden ${isDarkMode ? 'bg-slate-800' : 'bg-slate-200'}`}>
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: `${percentage}%` }}
-        transition={{ duration: 1, delay: delay + 0.3, ease: 'easeOut' }}
-        viewport={{ once: true }}
-        className="h-full rounded-full bg-gradient-to-r from-[#088395] to-[#09637E]"
-      />
-    </div>
-  </motion.div>
-);
+const SkillCloud = lazy(() => import('./3D/SkillCloud'));
 
 const StatCard = ({ icon: Icon, value, label, isDarkMode, delay }) => (
   <motion.div
@@ -59,26 +32,14 @@ const StatCard = ({ icon: Icon, value, label, isDarkMode, delay }) => (
 
 export default function AboutSection({ isDarkMode }) {
   const sectionRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start']
-  });
-
-  const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-  const skills = [
-    { skill: 'React / Next.js', percentage: 95 },
-    { skill: 'TypeScript', percentage: 90 },
-    { skill: 'Node.js / Express', percentage: 88 },
-    { skill: 'Python / Django', percentage: 82 },
-    { skill: 'UI/UX Design', percentage: 78 },
-  ];
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+  const show3DSkillCloud = !isMobile && !prefersReducedMotion;
 
   const stats = [
     { icon: Award, value: '6+', label: 'Years Experience' },
     { icon: Rocket, value: '8+', label: 'Projects Delivered' },
-    { icon: Coffee, value: '10+', label: 'Real Life Self Projects' },
+    { icon: Coffee, value: '10+', label: 'Personal Projects' },
     { icon: Zap, value: '100%', label: 'Client Satisfaction' },
   ];
 
@@ -91,7 +52,7 @@ export default function AboutSection({ isDarkMode }) {
     {
       icon: Code2,
       title: 'Backend Development',
-      description: 'Have Experience with ExpressJS,MongoDB,SQL,Docker,Redis,RabbitMQ',
+      description: 'Experience with Express.js, MongoDB, SQL, Docker, Redis, and RabbitMQ.',
     },
     {
       icon: Rocket,
@@ -167,40 +128,24 @@ export default function AboutSection({ isDarkMode }) {
               {/* Image Container */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="relative z-10 rounded-3xl overflow-hidden absolute"
+                className="relative z-10 rounded-3xl overflow-hidden"
               >
-                <SkillCloud isDarkMode={isDarkMode} />
-                {/* <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop"
-                  alt="Profile"
-                  className="w-full h-[500px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" /> */}
+                {show3DSkillCloud ? (
+                  <Suspense fallback={<div className={`h-[500px] ${isDarkMode ? 'bg-slate-800/30' : 'bg-slate-100/60'}`} />}>
+                    <SkillCloud isDarkMode={isDarkMode} />
+                  </Suspense>
+                ) : (
+                  <div className={`h-[500px] w-full rounded-3xl p-8 flex flex-col items-start justify-center gap-4 ${isDarkMode ? 'bg-slate-800/40 border border-slate-700 text-slate-300' : 'bg-slate-100 border border-slate-200 text-slate-700'}`}>
+                    <p className="text-lg font-semibold">Core Stack</p>
+                    <p className="text-sm leading-relaxed">
+                      React, Next.js, TypeScript, Node.js, Express.js, Docker, Redis, MongoDB, and SQL.
+                    </p>
+                    <p className="text-sm leading-relaxed">
+                      3D cloud is disabled on mobile and when reduced motion is enabled.
+                    </p>
+                  </div>
+                )}
               </motion.div>
-
-              {/* Floating Card */}
-              {/* <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                viewport={{ once: true }}
-                className={`absolute -bottom-6 -right-6 p-6 rounded-2xl shadow-xl z-20 ${isDarkMode ? 'bg-slate-800 border border-slate-700' : 'bg-white border border-slate-100'
-                  }`}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                      100%
-                    </div>
-                    <div className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                      Project Success
-                    </div>
-                  </div>
-                </div>
-              </motion.div> */}
 
               {/* Decorative Elements */}
               <div className={`absolute -top-4 -left-4 w-24 h-24 rounded-2xl -z-10 ${isDarkMode ? 'bg-violet-500/20' : 'bg-violet-200'
@@ -218,7 +163,7 @@ export default function AboutSection({ isDarkMode }) {
               viewport={{ once: true }}
               className={`text-2xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}
             >
-              My Technical Experiences
+              Technical Experience
             </motion.h3>
 
             {/* <div className="space-y-6">
@@ -240,10 +185,11 @@ export default function AboutSection({ isDarkMode }) {
               viewport={{ once: true }}
               className={`mt-8 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}
             >
-              With 6+ years of experience building scalable FinTech, E-commerce, and real-time platforms across
-              Southeast Asia. Specialized in React, TypeScript, and Next.js with strong expertise in WebSocket-based real-time systems
-              and role-based access control.Have Experience in ExpressJS,MongoDB,Docker,Redis,RabbitMQ too .Proven track record delivering production-grade systems, mentoring engineers, and
-              collaborating with cross-functional teams in fast-paced environments. Have
+              I have 6+ years of experience building scalable FinTech, e-commerce, and real-time platforms across
+              Southeast Asia. I specialize in React, TypeScript, and Next.js, with strong expertise in WebSocket-based
+              real-time systems and role-based access control. I also work across backend infrastructure with Express.js,
+              MongoDB, Docker, Redis, and RabbitMQ, and have a consistent track record of delivering production systems,
+              mentoring engineers, and collaborating with cross-functional teams.
             </motion.p>
           </div>
         </div>

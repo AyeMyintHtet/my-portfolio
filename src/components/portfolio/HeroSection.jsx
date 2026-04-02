@@ -1,9 +1,11 @@
 // @ts-nocheck
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Twitter, Mail, Sparkles } from 'lucide-react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Scene3D from './3D/Scene3D';
+import { useIsMobile } from '@/hooks/use-mobile';
+
+const Scene3D = lazy(() => import('./3D/Scene3D'));
 
 const Particle = ({ isDarkMode }) => {
   const randomX = Math.random() * 100;
@@ -42,25 +44,30 @@ const TypeWriter = ({ words, isDarkMode }) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const word = words[currentWordIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < word.length) {
-          setCurrentText(word.slice(0, currentText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
+    if (!words.length) return undefined;
+
+    const word = words[currentWordIndex] ?? '';
+
+    const timeoutId = window.setTimeout(() => {
+      if (!isDeleting && currentText.length === word.length) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting) {
         if (currentText.length > 0) {
           setCurrentText(word.slice(0, currentText.length - 1));
         } else {
           setIsDeleting(false);
           setCurrentWordIndex((prev) => (prev + 1) % words.length);
         }
+        return;
       }
-    }, isDeleting ? 50 : 100);
 
-    return () => clearTimeout(timeout);
+      setCurrentText(word.slice(0, currentText.length + 1));
+    }, !isDeleting && currentText.length === word.length ? 2000 : isDeleting ? 50 : 100);
+
+    return () => window.clearTimeout(timeoutId);
   }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
@@ -80,20 +87,29 @@ const TypeWriter = ({ words, isDarkMode }) => {
 export default function HeroSection({ isDarkMode }) {
   const containerRef = useRef(null);
   const roles = ['Full Stack Engineer', 'Frontend Engineer', 'Problem Solver', 'Tech Explorer'];
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+  const showEnhancedVisuals = !isMobile && !prefersReducedMotion;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start']
   });
 
-  const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const sceneOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/AyeMyintHtet', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/aye-myint-htet-195616187/', label: 'LinkedIn' },
-    // { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Mail, href: 'ayemyinthtet@gmail.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:ayemyinthtet099@gmail.com', label: 'Email' },
   ];
+
+  const scrollToSection = (selector) => {
+    const section = document.querySelector(selector);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section
@@ -105,14 +121,18 @@ export default function HeroSection({ isDarkMode }) {
         }`}
     >
       {/* 3D Scene Background */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
-        <motion.div
-          className="absolute inset-0"
-          style={{ opacity: useTransform(scrollYProgress, [0, 0.5], [1, 0]) }}
-        >
-          <Scene3D isDarkMode={isDarkMode} scrollProgress={scrollYProgress} variant="hero" />
-        </motion.div>
-      </div>
+      {showEnhancedVisuals && (
+        <div className="absolute inset-0 overflow-hidden opacity-30">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: sceneOpacity }}
+          >
+            <Suspense fallback={null}>
+              <Scene3D isDarkMode={isDarkMode} scrollProgress={scrollYProgress} variant="hero" />
+            </Suspense>
+          </motion.div>
+        </div>
+      )}
 
       {/* Animated Background Grid */}
       <div className="absolute inset-0 overflow-hidden">
@@ -125,31 +145,37 @@ export default function HeroSection({ isDarkMode }) {
       </div>
 
       {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <Particle key={i} isDarkMode={isDarkMode} />
-        ))}
-      </div>
+      {showEnhancedVisuals && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <Particle key={i} isDarkMode={isDarkMode} />
+          ))}
+        </div>
+      )}
 
       {/* Gradient Orbs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className={`absolute top-1/4 -left-32 w-96 h-96 rounded-full blur-3xl ${isDarkMode ? 'bg-[#088395]/20' : 'bg-[#7AB2B2]/30'
-          }`}
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 8, repeat: Infinity, delay: 2 }}
-        className={`absolute bottom-1/4 -right-32 w-96 h-96 rounded-full blur-3xl ${isDarkMode ? 'bg-[#09637E]/20' : 'bg-[#088395]/30'
-          }`}
-      />
+      {showEnhancedVisuals && (
+        <>
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className={`absolute top-1/4 -left-32 w-96 h-96 rounded-full blur-3xl ${isDarkMode ? 'bg-[#088395]/20' : 'bg-[#7AB2B2]/30'
+              }`}
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 8, repeat: Infinity, delay: 2 }}
+            className={`absolute bottom-1/4 -right-32 w-96 h-96 rounded-full blur-3xl ${isDarkMode ? 'bg-[#09637E]/20' : 'bg-[#088395]/30'
+              }`}
+          />
+        </>
+      )}
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
@@ -239,6 +265,7 @@ export default function HeroSection({ isDarkMode }) {
         >
           <Button
             size="lg"
+            onClick={() => scrollToSection('#work')}
             className="group relative px-8 py-6 text-lg rounded-full bg-gradient-to-r from-[#09637E] to-[#088395] hover:from-[#088395] hover:to-[#7AB2B2] text-white shadow-xl shadow-[#088395]/25 transition-all duration-300 hover:shadow-2xl hover:shadow-[#088395]/30 hover:-translate-y-1"
           >
             View My Work
@@ -253,12 +280,15 @@ export default function HeroSection({ isDarkMode }) {
           <Button
             size="lg"
             variant="outline"
+            asChild
             className={`px-8 py-6 text-lg rounded-full transition-all duration-300 hover:-translate-y-1 ${isDarkMode
               ? 'border-slate-700 text-black hover:text-white hover:bg-slate-800 hover:border-slate-600'
               : 'border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400'
               }`}
           >
-            Download CV
+            <a href="/Aye-Myint-Htet-CV.txt" download>
+              Download CV
+            </a>
           </Button>
         </motion.div>
 
@@ -273,6 +303,9 @@ export default function HeroSection({ isDarkMode }) {
             <motion.a
               key={social.label}
               href={social.href}
+              target={social.href.startsWith('http') ? '_blank' : undefined}
+              rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              aria-label={social.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 + index * 0.1 }}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Code2, Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
 
 export default function Footer({ isDarkMode }) {
   const scrollToTop = () => {
@@ -8,10 +8,9 @@ export default function Footer({ isDarkMode }) {
   };
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Mail, href: '#', label: 'Email' },
+    { icon: Github, href: 'https://github.com/AyeMyintHtet', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/aye-myint-htet-195616187/', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:ayemyinthtet099@gmail.com', label: 'Email' },
   ];
 
   const navLinks = [
@@ -101,15 +100,23 @@ export default function Footer({ isDarkMode }) {
               }`}>
               Get in Touch
             </h3>
-            <p className={`text-sm mb-4 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-              }`}>
+            <a
+              href="mailto:ayemyinthtet099@gmail.com"
+              className={`text-sm mb-4 inline-block transition-colors ${isDarkMode
+                ? 'text-slate-400 hover:text-white'
+                : 'text-slate-600 hover:text-slate-900'
+                }`}
+            >
               ayemyinthtet099@gmail.com
-            </p>
+            </a>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  aria-label={social.label}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className={`p-2.5 rounded-xl transition-colors ${isDarkMode
@@ -144,6 +151,8 @@ export default function Footer({ isDarkMode }) {
             onClick={scrollToTop}
             whileHover={{ scale: 1.1, y: -3 }}
             whileTap={{ scale: 0.95 }}
+            type="button"
+            aria-label="Back to top"
             className={`mt-4 md:mt-0 p-3 rounded-xl transition-colors ${isDarkMode
               ? 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
               : 'bg-white text-slate-500 hover:text-slate-900 shadow-sm hover:shadow-md'
