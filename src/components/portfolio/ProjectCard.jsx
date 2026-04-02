@@ -36,7 +36,7 @@ export default function ProjectCard({ project, isDarkMode, index }) {
           }`}
       >
         {/* Image Container */}
-        <div className="relative h-64 overflow-hidden">
+        <div className="relative h-44 sm:h-52 md:h-64 overflow-hidden">
           <motion.img
             src={project.image}
             alt={project.title}
@@ -106,30 +106,30 @@ export default function ProjectCard({ project, isDarkMode, index }) {
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-5 md:p-6">
           {/* Category */}
           <div className={`text-sm font-medium mb-2 bg-gradient-to-r from-[#09637E] to-[#d3f4f9] bg-clip-text text-transparent`}>
             {project.category}
           </div>
 
           {/* Title */}
-          <h3 className={`text-xl font-bold mb-3 group-hover:text-[#09637E] transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'
+          <h3 className={`text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 group-hover:text-[#09637E] transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             {project.title}
           </h3>
 
           {/* Description */}
-          <p className={`text-sm mb-4 line-clamp-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
+          <p className={`text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
             {project.description}
           </p>
 
           {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className={`px-3 py-1 rounded-full text-xs font-medium ${isDarkMode
+                className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium ${isDarkMode
                   ? 'bg-slate-700 text-slate-300'
                   : 'bg-slate-100 text-slate-700'
                   }`}

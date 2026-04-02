@@ -72,13 +72,13 @@ const TypeWriter = ({ words, isDarkMode }) => {
 
   return (
     <span className="inline-flex items-center ">
-      <span className="bg-gradient-to-r from-[#088395] via-[#7AB2B2] to-[#09637E] bg-clip-text text-transparent h-[80px]">
+      <span className="bg-gradient-to-r from-[#088395] via-[#7AB2B2] to-[#09637E] bg-clip-text text-transparent h-[44px] sm:h-[56px] md:h-[72px] lg:h-[80px]">
         {currentText}
       </span>
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.5, repeat: Infinity }}
-        className={`ml-1 w-1 h-12 md:h-16 ${isDarkMode ? 'bg-[#7AB2B2]' : 'bg-[#088395]'}`}
+        className={`ml-1 w-0.5 sm:w-1 h-8 sm:h-10 md:h-14 lg:h-16 ${isDarkMode ? 'bg-[#7AB2B2]' : 'bg-[#088395]'}`}
       />
     </span>
   );
@@ -178,13 +178,13 @@ export default function HeroSection({ isDarkMode }) {
       )}
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-4 sm:mb-6 md:mb-8"
         >
           <div
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${isDarkMode
@@ -202,7 +202,7 @@ export default function HeroSection({ isDarkMode }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
+          className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}
         >
           Hi, I'm{' '}
@@ -239,7 +239,7 @@ export default function HeroSection({ isDarkMode }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8"
+          className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8"
         >
           <TypeWriter words={roles} isDarkMode={isDarkMode} />
         </motion.div>
@@ -249,7 +249,7 @@ export default function HeroSection({ isDarkMode }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className={`text-lg md:text-xl max-w-2xl mx-auto mb-12 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
+          className={`text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}
         >
           I craft beautiful, high-performance web applications with modern technologies.
@@ -261,12 +261,12 @@ export default function HeroSection({ isDarkMode }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 md:mb-16"
         >
           <Button
             size="lg"
             onClick={() => scrollToSection('#work')}
-            className="group relative px-8 py-6 text-lg rounded-full bg-gradient-to-r from-[#09637E] to-[#088395] hover:from-[#088395] hover:to-[#7AB2B2] text-white shadow-xl shadow-[#088395]/25 transition-all duration-300 hover:shadow-2xl hover:shadow-[#088395]/30 hover:-translate-y-1"
+            className="group relative w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-full bg-gradient-to-r from-[#09637E] to-[#088395] hover:from-[#088395] hover:to-[#7AB2B2] text-white shadow-xl shadow-[#088395]/25 transition-all duration-300 hover:shadow-2xl hover:shadow-[#088395]/30 hover:-translate-y-1"
           >
             View My Work
             <motion.span
@@ -281,12 +281,12 @@ export default function HeroSection({ isDarkMode }) {
             size="lg"
             variant="outline"
             asChild
-            className={`px-8 py-6 text-lg rounded-full transition-all duration-300 hover:-translate-y-1 ${isDarkMode
-              ? 'border-slate-700 text-black hover:text-white hover:bg-slate-800 hover:border-slate-600'
-              : 'border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400'
+            className={`w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-full transition-all duration-300 hover:-translate-y-1 ${isDarkMode
+              ? 'border-slate-700  hover:text-white hover:bg-slate-800 hover:border-slate-600'
+              : 'border-slate-300  hover:bg-slate-100 hover:border-slate-400'
               }`}
           >
-            <a href="/Aye-Myint-Htet-CV.txt" download>
+            <a href="/AYE_MYINT_HTET_DEVELOPER_CV.pdf" download>
               Download CV
             </a>
           </Button>

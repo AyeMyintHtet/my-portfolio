@@ -19,74 +19,74 @@ export default function WorkProjectsSection({ isDarkMode }) {
 
   const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
-  const filters = ['All', 'Web App', 'Mobile', 'E-Commerce', 'SaaS'];
+  const filters = ['All', 'Web App', 'E-Commerce', 'SaaS'];
 
   const projects = [
     {
       id: 1,
-      title: 'FinTrack Dashboard',
+      title: 'Encrypted Chat App',
       category: 'SaaS',
-      description: 'A comprehensive financial tracking platform with real-time analytics, AI-powered insights, and seamless integrations with major banks.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-      liveUrl: null,
-      githubUrl: null,
+      description: 'End-to-end encrypted real-time chat application with secure key exchange, peer-to-peer messaging, and offline message delivery.',
+      image: 'https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=800&h=600&fit=crop',
+      technologies: ['Next.js', 'TypeScript', 'Supabase', 'WebSocket'],
+      liveUrl: 'https://secured-chatapp.vercel.app',
+      githubUrl: 'https://github.com/AyeMyintHtet/encrypted-chatapp',
       featured: true,
     },
     {
       id: 2,
-      title: 'ShopEase E-Commerce',
-      category: 'E-Commerce',
-      description: 'Full-stack e-commerce solution with advanced inventory management, payment processing, and analytics dashboard.',
+      title: 'Buffet POS System',
+      category: 'Web App',
+      description: 'Full-featured restaurant point-of-sale system with order management, table tracking, and real-time kitchen display for buffet operations.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-      technologies: ['Next.js', 'Stripe', 'MongoDB', 'Redis'],
-      liveUrl: null,
-      githubUrl: null,
+      technologies: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
+      liveUrl: 'https://my-restaurant-pos.vercel.app',
+      githubUrl: 'https://github.com/AyeMyintHtet/my-buffet-pos',
       featured: true,
     },
     {
       id: 3,
-      title: 'HealthSync App',
-      category: 'Mobile',
-      description: 'Cross-platform health monitoring application with wearable device integration and personalized recommendations.',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop',
-      technologies: ['React Native', 'Firebase', 'HealthKit', 'TensorFlow'],
-      liveUrl: null,
-      githubUrl: null,
-      featured: false,
+      title: 'Sales Analytics Dashboard',
+      category: 'SaaS',
+      description: 'Intelligent sales analytics platform with price tracking, competitive insights, and data-driven reporting for business decision-making.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+      technologies: ['TypeScript', 'React', 'Node.js', 'Chart.js'],
+      liveUrl: 'https://sales-analytics-i87l.onrender.com/',
+      githubUrl: 'https://github.com/AyeMyintHtet/sales-analytics',
+      featured: true,
     },
     {
       id: 4,
-      title: 'TeamCollab Pro',
-      category: 'Web App',
-      description: 'Enterprise team collaboration platform with real-time communication, project management, and file sharing.',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
-      technologies: ['Vue.js', 'WebSocket', 'Docker', 'GraphQL'],
+      title: 'FinTech Dashboard',
+      category: 'SaaS',
+      description: 'Comprehensive financial tracking dashboard with real-time analytics, portfolio management, and interactive data visualizations.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
       liveUrl: null,
-      githubUrl: null,
+      githubUrl: 'https://github.com/AyeMyintHtet/fintech-dashboard',
       featured: false,
     },
     {
       id: 5,
-      title: 'CloudStack CRM',
-      category: 'SaaS',
-      description: 'Modern CRM system with AI-powered lead scoring, automated workflows, and comprehensive reporting.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      technologies: ['Angular', 'Python', 'Kubernetes', 'TensorFlow'],
-      liveUrl: null,
-      githubUrl: null,
-      featured: true,
+      title: 'GrabNGo E-Commerce',
+      category: 'E-Commerce',
+      description: 'Modern e-commerce platform with product browsing, cart management, order processing, and seamless checkout experience.',
+      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop',
+      technologies: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
+      liveUrl: 'https://grabngo-brhy.onrender.com/',
+      githubUrl: 'https://github.com/AyeMyintHtet/grabngo',
+      featured: false,
     },
     {
       id: 6,
-      title: 'FoodieHub Delivery',
-      category: 'Mobile',
-      description: 'Food delivery platform with real-time order tracking, restaurant management, and driver optimization.',
-      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=600&fit=crop',
-      technologies: ['Flutter', 'Node.js', 'Google Maps', 'Stripe'],
-      liveUrl: null,
+      title: 'Today Ogilvy',
+      category: 'Web App',
+      description: 'Corporate website for Today Ogilvy, a leading advertising and communications agency, featuring dynamic content and modern brand experience.',
+      image: '/ogilvy.png',
+      technologies: ['React', 'Next.js', 'TypeScript', 'CMS'],
+      liveUrl: 'https://www.todayogilvy.com/',
       githubUrl: null,
-      featured: false,
+      featured: true,
     },
   ];
 
@@ -98,7 +98,7 @@ export default function WorkProjectsSection({ isDarkMode }) {
     <section
       id="work"
       ref={sectionRef}
-      className={`relative py-32 overflow-hidden ${isDarkMode
+      className={`relative py-16 sm:py-20 md:py-32 overflow-hidden ${isDarkMode
         ? 'bg-gradient-to-b from-slate-950 to-slate-900'
         : 'bg-gradient-to-b from-slate-50 to-white'
         }`}
@@ -122,14 +122,14 @@ export default function WorkProjectsSection({ isDarkMode }) {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
           <span className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 ${isDarkMode
             ? 'bg-[#09637E]/20 text-[#7AB2B2]'
@@ -137,14 +137,14 @@ export default function WorkProjectsSection({ isDarkMode }) {
             }`}>
             Work Projects
           </span>
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             Professional{' '}
             <span className="bg-gradient-to-r from-[#09637E] to-[#088395] bg-clip-text text-transparent">
               Portfolio
             </span>
           </h2>
-          <p className={`text-lg max-w-2xl mx-auto ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
+          <p className={`text-sm sm:text-base md:text-lg max-w-2xl mx-auto ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
             Showcasing the projects I've delivered for clients and companies,
             built with cutting-edge technologies and best practices.
@@ -157,7 +157,7 @@ export default function WorkProjectsSection({ isDarkMode }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex overflow-x-auto sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 md:mb-12 pb-2 sm:pb-0 scrollbar-hide"
         >
           {filters.map((filter) => (
             <motion.button
@@ -165,7 +165,7 @@ export default function WorkProjectsSection({ isDarkMode }) {
               onClick={() => setActiveFilter(filter)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter
+              className={`shrink-0 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${activeFilter === filter
                 ? 'bg-gradient-to-r from-[#09637E] to-[#088395] text-white shadow-lg shadow-[#09637E]/25'
                 : isDarkMode
                   ? 'bg-[#09637E]/20 text-[#7AB2B2]'
@@ -180,7 +180,7 @@ export default function WorkProjectsSection({ isDarkMode }) {
         {/* Projects Grid */}
         <motion.div
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
         >
           {filteredProjects.map((project, index) => (
             <ProjectCard

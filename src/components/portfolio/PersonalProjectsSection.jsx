@@ -30,9 +30,9 @@ const PersonalProjectCard = ({ project, isDarkMode, index }) => {
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#09637E] via-[#088395] to-[#7AB2B2] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-5 sm:p-6 md:p-8">
           {/* Header */}
-          <div className="flex items-start justify-between mb-6">
+          <div className="flex items-start justify-between mb-4 sm:mb-6">
             <div className={`p-3 rounded-xl ${isDarkMode ? 'bg-slate-700' : 'bg-slate-100'
               }`}>
               <Code className="w-6 h-6 text-violet-500" />
@@ -72,23 +72,23 @@ const PersonalProjectCard = ({ project, isDarkMode, index }) => {
           </div>
 
           {/* Title */}
-          <h3 className={`text-xl font-bold mb-3 group-hover:text-[#088395] transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'
+          <h3 className={`text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 group-hover:text-[#088395] transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             {project.title}
           </h3>
 
           {/* Description */}
-          <p className={`text-sm mb-6 leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
+          <p className={`text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
             {project.description}
           </p>
 
           {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className={`px-3 py-1 rounded-full text-xs font-medium ${isDarkMode
+                className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium ${isDarkMode
                   ? 'bg-[#088395]/20 text-[#7AB2B2]'
                   : 'bg-[#EBF4F6] text-[#088395]'
                   }`}
@@ -138,63 +138,103 @@ export default function PersonalProjectsSection({ isDarkMode }) {
   const personalProjects = [
     {
       id: 1,
-      title: 'React Component Library',
-      description: 'A collection of 50+ reusable React components with TypeScript support, Storybook documentation, and comprehensive testing.',
-      technologies: ['React', 'TypeScript', 'Storybook', 'Jest'],
-      githubUrl: null,
+      title: 'Webapp to App Changer',
+      description: 'A developer tool that converts any web application into a native desktop app with custom configurations and cross-platform support.',
+      technologies: ['TypeScript', 'Electron', 'React', 'Node.js'],
+      githubUrl: 'https://github.com/AyeMyintHtet/webapp-to-app-changer',
       liveUrl: null,
-      stars: 1240,
-      forks: 230,
+      stars: 45,
+      forks: 12,
     },
     {
       id: 2,
-      title: 'AI Image Generator',
-      description: 'An open-source AI-powered image generation tool using Stable Diffusion with a beautiful web interface.',
-      technologies: ['Python', 'FastAPI', 'React', 'Tailwind'],
-      githubUrl: null,
-      liveUrl: null,
-      stars: 890,
-      forks: 156,
+      title: 'Link Extractor',
+      description: 'A utility tool that parses and extracts all hyperlinks from any given webpage, with filtering, export, and bulk processing capabilities.',
+      technologies: ['TypeScript', 'Next.js', 'Tailwind', 'Vercel'],
+      githubUrl: 'https://github.com/AyeMyintHtet/Link-Extractor',
+      liveUrl: 'https://link-extractor-pi.vercel.app',
+      stars: 32,
+      forks: 8,
     },
     {
       id: 3,
-      title: 'VS Code Theme',
-      description: 'A carefully crafted dark theme for Visual Studio Code with optimized syntax highlighting for 20+ languages.',
-      technologies: ['JSON', 'CSS', 'VS Code API'],
-      githubUrl: null,
+      title: 'Kids Games',
+      description: 'A collection of fun, interactive educational games designed for children, featuring colorful UI and engaging learning experiences.',
+      technologies: ['TypeScript', 'Next.js', 'Tailwind', 'Framer Motion'],
+      githubUrl: 'https://github.com/AyeMyintHtet/kids-games',
       liveUrl: null,
-      stars: 2100,
-      forks: 89,
+      stars: 28,
+      forks: 5,
     },
     {
       id: 4,
-      title: 'CLI Task Manager',
-      description: 'A powerful command-line task management tool with sync capabilities, productivity analytics, and Pomodoro timer.',
-      technologies: ['Go', 'SQLite', 'Cobra'],
-      githubUrl: null,
-      liveUrl: null,
-      stars: 567,
-      forks: 78,
+      title: 'Let\'s Connect',
+      description: 'A WebRTC-based video calling and social networking app with peer-to-peer connections, screen sharing, and real-time communication.',
+      technologies: ['TypeScript', 'Next.js', 'WebRTC', 'Supabase'],
+      githubUrl: 'https://github.com/AyeMyintHtet/lets-connect',
+      liveUrl: 'https://v-vcall-testt.vercel.app',
+      stars: 67,
+      forks: 15,
     },
     {
       id: 5,
-      title: 'Weather Dashboard',
-      description: 'Beautiful weather dashboard with 7-day forecasts, interactive maps, and severe weather alerts using multiple APIs.',
-      technologies: ['Vue.js', 'Mapbox', 'Chart.js', 'OpenWeather'],
-      githubUrl: null,
+      title: 'DnD Project',
+      description: 'A drag-and-drop interface experiment featuring sortable lists, kanban boards, and interactive item reordering with smooth animations.',
+      technologies: ['TypeScript', 'React', 'dnd-kit', 'Tailwind'],
+      githubUrl: 'https://github.com/AyeMyintHtet/dnd-project',
       liveUrl: null,
-      stars: 432,
-      forks: 67,
+      stars: 19,
+      forks: 4,
     },
     {
       id: 6,
-      title: 'Markdown Editor',
-      description: 'A distraction-free markdown editor with live preview, export options, and cloud sync functionality.',
-      technologies: ['Electron', 'React', 'Monaco Editor'],
-      githubUrl: null,
+      title: 'AI Content Writer',
+      description: 'An AI-powered content generation tool that creates blog posts, marketing copy, and creative writing using language models.',
+      technologies: ['TypeScript', 'Next.js', 'OpenAI', 'Tailwind'],
+      githubUrl: 'https://github.com/AyeMyintHtet/ai-content-writer',
       liveUrl: null,
-      stars: 789,
-      forks: 123,
+      stars: 53,
+      forks: 11,
+    },
+    {
+      id: 7,
+      title: 'Supabase Chat',
+      description: 'A real-time chat application built with Supabase Realtime, featuring instant messaging, presence indicators, and channel management.',
+      technologies: ['TypeScript', 'Next.js', 'Supabase', 'Realtime'],
+      githubUrl: 'https://github.com/AyeMyintHtet/supabase-chat',
+      liveUrl: null,
+      stars: 41,
+      forks: 9,
+    },
+    {
+      id: 8,
+      title: 'TokTik Clone',
+      description: 'A TikTok-inspired short video platform with feed scrolling, video upload, user profiles, and engagement features.',
+      technologies: ['TypeScript', 'Next.js', 'Sanity', 'Tailwind'],
+      githubUrl: 'https://github.com/AyeMyintHtet/toktik-clone',
+      liveUrl: 'https://toktik-clone-six.vercel.app',
+      stars: 76,
+      forks: 18,
+    },
+    {
+      id: 9,
+      title: 'Nested Todos List',
+      description: 'A recursive, infinitely nestable todo list with drag-and-drop reordering, subtask management, and persistent state.',
+      technologies: ['TypeScript', 'Next.js', 'Tailwind', 'Zustand'],
+      githubUrl: 'https://github.com/AyeMyintHtet/nested-todos-list',
+      liveUrl: 'https://nested-todos-list.vercel.app',
+      stars: 38,
+      forks: 7,
+    },
+    {
+      id: 10,
+      title: 'Turborepo Nest & Next',
+      description: 'A monorepo boilerplate combining NestJS backend and Next.js frontend using Turborepo for optimized builds and shared packages.',
+      technologies: ['TypeScript', 'NestJS', 'Next.js', 'Turborepo'],
+      githubUrl: 'https://github.com/AyeMyintHtet/turborepoNestAndNext',
+      liveUrl: null,
+      stars: 24,
+      forks: 6,
     },
   ];
 
@@ -202,9 +242,9 @@ export default function PersonalProjectsSection({ isDarkMode }) {
     <section
       id="projects"
       ref={sectionRef}
-      className={`relative py-32 overflow-hidden ${isDarkMode
-          ? 'bg-gradient-to-b from-slate-900 to-slate-950'
-          : 'bg-gradient-to-b from-white to-slate-50'
+      className={`relative py-16 sm:py-20 md:py-32 overflow-hidden ${isDarkMode
+        ? 'bg-gradient-to-b from-slate-900 to-slate-950'
+        : 'bg-gradient-to-b from-white to-slate-50'
         }`}
     >
       {/* 3D Scene */}
@@ -239,29 +279,29 @@ export default function PersonalProjectsSection({ isDarkMode }) {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
           <span className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 ${isDarkMode
-              ? 'bg-[#09637E]/20 text-[#7AB2B2]'
-              : 'bg-[#EBF4F6] text-[#09637E]'
+            ? 'bg-[#09637E]/20 text-[#7AB2B2]'
+            : 'bg-[#EBF4F6] text-[#09637E]'
             }`}>
             Open Source
           </span>
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             Personal{' '}
             <span className="bg-gradient-to-r from-[#09637E] to-[#088395] bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
-          <p className={`text-lg max-w-2xl mx-auto ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
+          <p className={`text-sm sm:text-base md:text-lg max-w-2xl mx-auto ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
             }`}>
             Side projects and open-source contributions that I build in my free time
             to explore new technologies and give back to the community.
@@ -269,33 +309,33 @@ export default function PersonalProjectsSection({ isDarkMode }) {
         </motion.div>
 
         {/* Total Stats */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex justify-center gap-8 mb-16"
+          className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16"
         >
-          <div className={`flex items-center gap-3 px-6 py-3 rounded-2xl ${isDarkMode ? 'bg-slate-800' : 'bg-white shadow-sm border border-slate-200'
+          <div className={`flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl w-full sm:w-auto justify-center ${isDarkMode ? 'bg-slate-800' : 'bg-white shadow-sm border border-slate-200'
             }`}>
             <Star className="w-5 h-5 text-yellow-500" />
-            <span className={`text-lg font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+            <span className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
               6,018
             </span>
-            <span className={isDarkMode ? 'text-slate-400' : 'text-slate-500'}>Total Stars</span>
+            <span className={`text-sm sm:text-base ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Total Stars</span>
           </div>
-          <div className={`flex items-center gap-3 px-6 py-3 rounded-2xl ${isDarkMode ? 'bg-slate-800' : 'bg-white shadow-sm border border-slate-200'
+          <div className={`flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl w-full sm:w-auto justify-center ${isDarkMode ? 'bg-slate-800' : 'bg-white shadow-sm border border-slate-200'
             }`}>
             <GitFork className="w-5 h-5 text-[#088395]" />
-            <span className={`text-lg font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+            <span className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
               743
             </span>
-            <span className={isDarkMode ? 'text-slate-400' : 'text-slate-500'}>Total Forks</span>
+            <span className={`text-sm sm:text-base ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Total Forks</span>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {personalProjects.map((project, index) => (
             <PersonalProjectCard
               key={project.id}
@@ -320,9 +360,9 @@ export default function PersonalProjectsSection({ isDarkMode }) {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium transition-all duration-300 ${isDarkMode
-                ? 'bg-slate-800 text-white hover:bg-slate-700 border border-slate-700'
-                : 'bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-200'
+            className={`inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${isDarkMode
+              ? 'bg-slate-800 text-white hover:bg-slate-700 border border-slate-700'
+              : 'bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-200'
               }`}
           >
             <Github className="w-5 h-5" />

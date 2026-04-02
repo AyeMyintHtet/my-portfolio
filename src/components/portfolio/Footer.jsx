@@ -22,10 +22,11 @@ export default function Footer({ isDarkMode }) {
 
   return (
     <footer
-      className={`relative py-20 overflow-hidden ${isDarkMode
+      className={`relative py-12 sm:py-16 md:py-20 overflow-hidden ${isDarkMode
         ? 'bg-slate-950 border-t border-slate-800'
         : 'bg-slate-100 border-t border-slate-200'
         }`}
+      id='footer'
     >
       {/* Background Gradient */}
       <div className={`absolute inset-0 ${isDarkMode
@@ -33,9 +34,9 @@ export default function Footer({ isDarkMode }) {
         : 'bg-gradient-to-t from-violet-100/50 to-transparent'
         }`} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 mb-10 sm:mb-12 md:mb-16">
           {/* Logo & Description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -132,13 +133,13 @@ export default function Footer({ isDarkMode }) {
         </div>
 
         {/* Bottom Bar */}
-        <div className={`flex flex-col md:flex-row items-center justify-between pt-8 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'
+        <div className={`flex flex-col md:flex-row items-center justify-between pt-6 sm:pt-8 border-t ${isDarkMode ? 'border-slate-800' : 'border-slate-200'
           }`}>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className={`text-sm flex items-center gap-1 ${isDarkMode ? 'text-slate-500' : 'text-slate-500'
+            className={`text-xs sm:text-sm flex items-center gap-1 ${isDarkMode ? 'text-slate-500' : 'text-slate-500'
               }`}
           >
             © 2026 Aye Myint Htet. Made with

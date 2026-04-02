@@ -108,7 +108,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
                 className="hidden md:block"
               >
                 <Button
-                  onClick={() => scrollTo('#projects')}
+                  onClick={() => scrollTo('#footer')}
                   className={`rounded-full px-6 font-medium ${isDarkMode
                     ? 'bg-gradient-to-r from-[#09637E] to-[#088395] hover:from-[#088395] hover:to-[#7AB2B2] text-white shadow-lg shadow-[#088395]/25'
                     : 'bg-gradient-to-r from-[#088395] to-[#7AB2B2] hover:from-[#09637E] hover:to-[#088395] text-white shadow-lg shadow-[#088395]/25'
@@ -165,7 +165,7 @@ export default function Navbar({ isDarkMode, toggleTheme }) {
                 </motion.button>
               ))}
               <Button
-                onClick={() => scrollTo('#projects')}
+                onClick={() => scrollTo('#footer')}
                 className="w-full mt-4 rounded-xl py-6 font-medium bg-gradient-to-r from-[#09637E] to-[#088395] text-white"
               >
                 Let's Talk
