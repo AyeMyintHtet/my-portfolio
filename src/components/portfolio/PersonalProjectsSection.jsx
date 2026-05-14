@@ -172,7 +172,7 @@ export default function PersonalProjectsSection({ isDarkMode }) {
       description: 'A WebRTC-based video calling and social networking app with peer-to-peer connections, screen sharing, and real-time communication.',
       technologies: ['TypeScript', 'Next.js', 'WebRTC', 'Supabase'],
       githubUrl: 'https://github.com/AyeMyintHtet/lets-connect',
-      liveUrl: 'https://v-vcall-testt.vercel.app',
+      liveUrl: 'https://lets-connect-gamma.vercel.app/',
       stars: 67,
       forks: 15,
     },
