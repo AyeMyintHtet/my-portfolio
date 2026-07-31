@@ -286,7 +286,7 @@ export default function HeroSection({ isDarkMode }) {
               : 'border-slate-300  hover:bg-slate-100 hover:border-slate-400'
               }`}
           >
-            <a href="/AYE_MYINT_HTET_DEVELOPER_CV.pdf" download>
+            <a href="/AyeMyintHtet_CVFORM.pdf" download>
               Download CV
             </a>
           </Button>
