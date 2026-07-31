@@ -29,7 +29,7 @@ export default function WorkProjectsSection({ isDarkMode }) {
       description: 'End-to-end encrypted real-time chat application with secure key exchange, peer-to-peer messaging, and offline message delivery.',
       image: 'https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=800&h=600&fit=crop',
       technologies: ['Next.js', 'TypeScript', 'Supabase', 'WebSocket'],
-      liveUrl: 'https://secured-chatapp.vercel.app',
+      liveUrl: 'https://cqgram.vercel.app/',
       githubUrl: 'https://github.com/AyeMyintHtet/encrypted-chatapp',
       featured: true,
     },
